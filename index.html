@@ -105,19 +105,33 @@
   .hero h1 .hl{color:var(--accent)}
   .hero .sub{font-size:clamp(18px,2.6vw,21px);color:var(--ink-2);max-width:56ch;margin:0 0 26px}
   .hero .sub strong{color:var(--ink)}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;align-items:flex-start}
   .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    font-weight:700;font-size:16px;text-decoration:none;
-    padding:14px 22px;border-radius:10px;border:2px solid transparent;
-    transition:transform .12s ease, background .12s ease;
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-weight:700;font-size:16px;text-decoration:none;line-height:1.25;text-align:center;
+    min-height:52px;padding:14px 24px;border-radius:12px;border:2px solid transparent;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
   }
-  .btn:active{transform:scale(.98)}
-  .btn-primary{background:var(--accent);color:#fff}
-  .btn-primary:hover{background:var(--accent-deep)}
-  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-deep)}
+  .btn svg{flex:none}
+  .btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .btn-primary{
+    background:var(--accent);color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 1px 2px rgba(16,28,38,.2), 0 10px 22px rgba(194,67,0,.3);
+  }
+  .btn-primary:hover{
+    background:var(--accent-deep);transform:translateY(-1px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 2px 3px rgba(16,28,38,.2), 0 14px 28px rgba(156,54,0,.34);
+  }
+  .btn-primary:active{transform:translateY(0) scale(.98);box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 1px 2px rgba(16,28,38,.22)}
+  .btn-ghost{
+    background:var(--surface);color:var(--ink);border-color:var(--line);
+    box-shadow:0 1px 2px rgba(16,28,38,.08);
+  }
+  .btn-ghost:hover{border-color:var(--ink-3);transform:translateY(-1px);box-shadow:0 4px 12px rgba(16,28,38,.1)}
+  .btn-ghost:active{transform:translateY(0) scale(.98);box-shadow:0 1px 2px rgba(16,28,38,.1)}
   .btn .arr{font-family:"IBM Plex Mono",monospace}
+  .cta-primary{display:flex;flex-direction:column;gap:9px}
+  .cta-micro{margin:0;font-size:13.5px;font-weight:600;color:var(--navy-ink-2);padding-left:2px}
   /* ---------- demo ---------- */
   .demo{padding:44px 0 10px}
   .demo-grid{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:44px;align-items:start}
@@ -345,8 +359,8 @@
   .final{margin:64px 0 0;background:var(--navy);color:var(--navy-ink);padding:56px 0 60px}
   .final h2{color:#fff;max-width:16ch}
   .final p{color:var(--navy-ink-2);max-width:54ch;font-size:18px;margin:0 0 26px}
-  .final .btn-ghost{color:#fff;border-color:#fff}
-  .final .btn-ghost:hover{border-color:var(--accent);color:#ffab73}
+  .final .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75);box-shadow:none}
+  .final .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
   footer{padding:34px 0 120px;color:var(--ink-3);font-size:14px}
   footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:18px 28px;flex-wrap:wrap}
   .foot-brand{font-size:16.5px;font-weight:800;color:var(--ink)}
@@ -363,7 +377,7 @@
     padding:10px 14px calc(10px + env(safe-area-inset-bottom));
     display:none;gap:10px;box-shadow:0 -8px 24px rgba(16,28,38,.12);
   }
-  .sticky-cta .btn{flex:1;justify-content:center;padding:13px 10px;font-size:15.5px}
+  .sticky-cta .btn{flex:1;justify-content:center;min-height:50px;padding:13px 10px;font-size:15.5px}
   .sticky-cta.show{display:flex}
   @media (min-width:821px){.sticky-cta{display:none!important}}
 
@@ -659,8 +673,11 @@
       <h2>Your next missed call is coming either way.</h2>
       <p>The only question is whether that caller gets a text from your shop — or a dial tone from the next one. Setup is $500, the service is $300 a month, and if it sends you zero leads in the first 30 days, the next three months are on us. Call or text us and we'll get your shop set up.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="tel:+18134950824">Call us to set up today — (813) 495-0824</a>
-        <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop.">Text us</a>
+        <div class="cta-primary">
+          <a class="btn btn-primary" href="tel:+18134950824"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us to set up today — (813) 495-0824</a>
+          <p class="cta-micro">Free to talk · No obligation</p>
+        </div>
+        <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Text us</a>
       </div>
     </div>
   </section>
@@ -674,15 +691,15 @@
       <p class="foot-serves">Serving HVAC shops across the Tampa Bay area</p>
     </div>
     <div class="foot-actions">
-      <a class="btn btn-primary" href="tel:+18134950824">Call us — (813) 495-0824</a>
-      <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop.">Text us</a>
+      <a class="btn btn-primary" href="tel:+18134950824"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us — (813) 495-0824</a>
+      <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Text us</a>
     </div>
   </div>
 </footer>
 
 <div class="sticky-cta" id="stickyCta" aria-hidden="true">
-  <a class="btn btn-primary" href="tel:+18134950824">Call us</a>
-  <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop.">Text us</a>
+  <a class="btn btn-primary" href="tel:+18134950824"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+  <a class="btn btn-ghost" href="sms:+18134950824?&amp;body=Hi%2C%20I%20tried%20the%20demo.%20I%27m%20interested%20in%20the%20missed-call%20system%20for%20my%20shop."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Text us</a>
 </div>
 
 <script>
